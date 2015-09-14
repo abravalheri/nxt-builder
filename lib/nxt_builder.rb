@@ -1,5 +1,5 @@
 require "nxt_builder/version"
+require "nxt_builder/xml"
 
 module NxtBuilder
-  # Your code goes here...
 end
