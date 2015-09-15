@@ -80,7 +80,7 @@ module NxtBuilder
     end
 
     def doctype!(name, external_id = nil, system_id = nil)
-      @doc.create_external_subset(name.to_s, external_id, system_id)
+      @doc.create_internal_subset(name.to_s, external_id, system_id)
     end
 
     def <<(element)
@@ -112,9 +112,29 @@ module NxtBuilder
       self
     end
 
-    def to_s(options = {})
-      options = {encoding: 'UTF-8'}.merge(options)
-      @buffer.to_xml(options)
+    [:xml, :xhtml, :html].each do |format|
+      define_method(:"to_#{format}") do |options = {}|
+        to_format(format, options)
+      end
+    end
+
+    alias_method :to_s, :to_xml
+
+    def to_format(format, options = {})
+      @doc << @buffer
+
+      unless [:html, :xhtml, :xml].include?(format)
+        raise NotImplementedError, "Format #{format} not implemented"
+      end
+
+      options = {
+        encoding: 'UTF-8',
+        # TODO: consider for HTML identation:
+        # save_with: Nokogiri::XML::Node::SaveOptions::NO_DECLARATION |
+        #            Nokogiri::XML::Node::SaveOptions::DEFAULT_XML
+      }.merge(options)
+
+      @doc.send(:"to_#{format}", options)
     end
   end
 end
