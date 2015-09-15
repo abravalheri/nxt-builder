@@ -7,10 +7,11 @@ Usage:
   benchmark/run [options]
 
 Options:
-  -h           Show this screen.
+  -h           Show this screen
   -p <path>    When provided will restrict the benchmarks to one subfolder
   -t <time>    Benchmark time (see gem benchmak/ips). Default 5
   -w <warmup>  Warm-up time (see gem benchmak/ips). Default 2
+  -s           Save results to file. Default false
 
 (path must be relative to `benchmark` folder)
 
@@ -28,18 +29,21 @@ end
 
 if File.identical?(__FILE__, $0)
   # Script arguments
-  scope = "*"
+  scope = "."
   bench_time = 5
   warm_time = 2
+  save = false
 
   if ARGV.index('-h')
     puts doc
     exit
   end
 
+  i = 0
   bench_time = ARGV[i+1].to_i if i = ARGV.index('-t')
   warm_time = ARGV[i+1].to_i if i = ARGV.index('-w')
   scope = ARGV[i+1] if i = ARGV.index('-p')
+  save = ARGV.index('-p')
 
   require 'erb'
   require 'bundler/setup'
@@ -78,28 +82,48 @@ if File.identical?(__FILE__, $0)
   # Take the measures
   require 'benchmark/ips'
 
-  Benchmark.ips do |bm|
-    bm.config(time: bench_time, warmup: warm_time)
+  begin
+    now = Time.now.to_s
+    puts "Benchmark " << now << " time: #{bench_time} warmup: #{warm_time} "
 
-    benchs.each do |label, bench|
-      bm.report(label) do |n|
-        i = 0
-        result = nil
-        while i < n
-          i += 1
-          result = bench.run
-        end
-
-        results[label] = result
-      end
+    if save
+      result_file = scope == '.' ? 'all' : scope
+      $stdout = File.new(File.expand_path("results_#{result_file}.txt", bwd), 'w')
+      puts "Benchmark " << now << " time: #{bench_time} warmup: #{warm_time} "
     end
 
-    bm.compare!
+    Benchmark.ips do |bm|
+      bm.config(time: bench_time, warmup: warm_time)
+
+      benchs.each do |label, bench|
+        bm.report(label) do |n|
+          i = 0
+          result = nil
+          while i < n
+            i += 1
+            result = bench.run
+          end
+
+          results[label] = result
+        end
+      end
+
+      bm.compare!
+    end
+
+  ensure
+    $stdout = STDOUT
   end
 
-  File.open(File.expand_path(".tmp-results", bwd), 'w') do |f|
-    results.each do |label, result|
-      f << "\n\n\n\n<!--  " << label << "  -->\n\n" << result
+  if save
+    result_file = scope == '.' ? 'all' : scope
+    File.open(File.expand_path("results_#{result_file}.xml", bwd), 'w') do |f|
+      f << %{<results start="#{now}" time="#{bench_time}" warmup="#{warm_time}">\n}
+      f << "  <!--  " << now << " time: #{bench_time} warmup: #{warm_time}  -->"
+      results.each do |label, result|
+        f << "\n\n\n\n  <!--  " << label << "  -->\n\n  " << result.split("\n").join("\n  ")
+      end
+      f << "\n</results>"
     end
   end
 end

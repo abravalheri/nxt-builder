@@ -1,0 +1,309 @@
+<results start="2015-09-15 17:03:12 -0300" time="5" warmup="2">
+  <!--  2015-09-15 17:03:12 -0300 time: 5 warmup: 2  -->
+
+
+
+  <!--   Static Template Arbre                       -->
+
+  <html>
+    <body>
+      <ul class="catalog">
+        <li class="cd">
+          <p class="title">Empire Burlesque</p>
+          <p class="artist">Bob Dylan</p>
+          <p class="country">USA</p>
+          <p class="company">Columbia</p>
+          <p class="price">10.9</p>
+          <p class="year">1985</p>
+        </li>
+        <li class="cd">
+          <p class="title">Hide your heart</p>
+          <p class="artist">Bonnie Tylor</p>
+          <p class="country">UK</p>
+          <p class="company">CBS Records</p>
+          <p class="price">9.9</p>
+          <p class="year">1988</p>
+        </li>
+        <li class="cd">
+          <p class="title">Greatest Hits</p>
+          <p class="artist">Dolly Parton</p>
+          <p class="country">USA</p>
+          <p class="company">RCA</p>
+          <p class="price">9.9</p>
+          <p class="year">1982</p>
+        </li>
+      </ul>
+    </body>
+  </html>
+
+
+
+  <!--   Static Template Erb                         -->
+
+    <html>
+      <body>
+        <ul class="catalog">
+          <li class="cd">
+            <p class="title">Empire Burlesque</p>
+            <p class="artist">Bob Dylan</p>
+            <p class="country">USA</p>
+            <p class="company">Columbia</p>
+            <p class="price">10.90</p>
+            <p class="year">1985</p>
+          </li>
+          <li class="cd">
+            <p class="title">Hide your heart</p>
+            <p class="artist">Bonnie Tylor</p>
+            <p class="country">UK</p>
+            <p class="company">CBS Records</p>
+            <p class="price">9.90</p>
+            <p class="year">1988</p>
+          </li>
+          <li class="cd">
+            <p class="title">Greatest Hits</p>
+            <p class="artist">Dolly Parton</p>
+            <p class="country">USA</p>
+            <p class="company">RCA</p>
+            <p class="price">9.90</p>
+            <p class="year">1982</p>
+          </li>
+        </ul>
+      </body>
+    </html>
+
+
+
+  <!--   Static Template Erector Class               -->
+
+  <html>
+    <body>
+      <ul class="catalog">
+        <li class="cd">
+          <p class="title">Empire Burlesque</p>
+          <p class="artist">Bob Dylan</p>
+          <p class="country">USA</p>
+          <p class="company">Columbia</p>
+          <p class="price">10.9</p>
+          <p class="year">1985</p>
+        </li>
+        <li class="cd">
+          <p class="title">Hide your heart</p>
+          <p class="artist">Bonnie Tylor</p>
+          <p class="country">UK</p>
+          <p class="company">CBS Records</p>
+          <p class="price">9.9</p>
+          <p class="year">1988</p>
+        </li>
+        <li class="cd">
+          <p class="title">Greatest Hits</p>
+          <p class="artist">Dolly Parton</p>
+          <p class="country">USA</p>
+          <p class="company">RCA</p>
+          <p class="price">9.9</p>
+          <p class="year">1982</p>
+        </li>
+      </ul>
+    </body>
+  </html>
+
+
+
+  <!--   Static Template Erector Mixin               -->
+
+  <html>
+    <body>
+      <ul class="catalog">
+        <li class="cd">
+          <p class="title">Empire Burlesque</p>
+          <p class="artist">Bob Dylan</p>
+          <p class="country">USA</p>
+          <p class="company">Columbia</p>
+          <p class="price">10.9</p>
+          <p class="year">1985</p>
+        </li>
+        <li class="cd">
+          <p class="title">Hide your heart</p>
+          <p class="artist">Bonnie Tylor</p>
+          <p class="country">UK</p>
+          <p class="company">CBS Records</p>
+          <p class="price">9.9</p>
+          <p class="year">1988</p>
+        </li>
+        <li class="cd">
+          <p class="title">Greatest Hits</p>
+          <p class="artist">Dolly Parton</p>
+          <p class="country">USA</p>
+          <p class="company">RCA</p>
+          <p class="price">9.9</p>
+          <p class="year">1982</p>
+        </li>
+      </ul>
+    </body>
+  </html>
+
+
+
+  <!--   Static Template Htmless Standard            -->
+
+  <html xmlns="http://www.w3.org/1999/xhtml"><body><ul class="catalog"><li class="cd"><p class="title">Empire Burlesque</p><p class="artist">Bob Dylan</p><p class="country">USA</p><p class="company">Columbia</p><p class="price">10.9</p><p class="year">1985</p></li><li class="cd"><p class="title">Hide your heart</p><p class="artist">Bonnie Tylor</p><p class="country">UK</p><p class="company">CBS Records</p><p class="price">9.9</p><p class="year">1988</p></li><li class="cd"><p class="title">Greatest Hits</p><p class="artist">Dolly Parton</p><p class="country">USA</p><p class="company">RCA</p><p class="price">9.9</p><p class="year">1982</p></li></ul></body></html>
+
+
+
+  <!--   Static Template Htmless Formatted           -->
+
+  
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <body>
+      <ul class="catalog">
+        <li class="cd">
+          <p class="title">Empire Burlesque
+          </p>
+          <p class="artist">Bob Dylan
+          </p>
+          <p class="country">USA
+          </p>
+          <p class="company">Columbia
+          </p>
+          <p class="price">10.9
+          </p>
+          <p class="year">1985
+          </p>
+        </li>
+        <li class="cd">
+          <p class="title">Hide your heart
+          </p>
+          <p class="artist">Bonnie Tylor
+          </p>
+          <p class="country">UK
+          </p>
+          <p class="company">CBS Records
+          </p>
+          <p class="price">9.9
+          </p>
+          <p class="year">1988
+          </p>
+        </li>
+        <li class="cd">
+          <p class="title">Greatest Hits
+          </p>
+          <p class="artist">Dolly Parton
+          </p>
+          <p class="country">USA
+          </p>
+          <p class="company">RCA
+          </p>
+          <p class="price">9.9
+          </p>
+          <p class="year">1982
+          </p>
+        </li>
+      </ul>
+    </body>
+  </html>
+
+
+
+  <!--   Static Template Nokogiri Builder            -->
+
+  <?xml version="1.0"?>
+  <html>
+    <body>
+      <ul class="catalog">
+        <li class="cd">
+          <p class="title">Empire Burlesque</p>
+          <p class="artist">Bob Dylan</p>
+          <p class="country">USA</p>
+          <p class="company">Columbia</p>
+          <p class="price">10.9</p>
+          <p class="year">1985</p>
+        </li>
+        <li class="cd">
+          <p class="title">Hide your heart</p>
+          <p class="artist">Bonnie Tylor</p>
+          <p class="country">UK</p>
+          <p class="company">CBS Records</p>
+          <p class="price">9.9</p>
+          <p class="year">1988</p>
+        </li>
+        <li class="cd">
+          <p class="title">Greatest Hits</p>
+          <p class="artist">Dolly Parton</p>
+          <p class="country">USA</p>
+          <p class="company">RCA</p>
+          <p class="price">9.9</p>
+          <p class="year">1982</p>
+        </li>
+      </ul>
+    </body>
+  </html>
+
+
+
+  <!--   Static Template Nxt Builder Html Block      -->
+
+  <html>
+    <body>
+      <ul class="catalog">
+        <li class="cd">
+          <p class="title">Empire Burlesque</p>
+          <p class="artist">Bob Dylan</p>
+          <p class="country">USA</p>
+          <p class="company">Columbia</p>
+          <p class="price">10.9</p>
+          <p class="year">1985</p>
+        </li>
+        <li class="cd">
+          <p class="title">Hide your heart</p>
+          <p class="artist">Bonnie Tylor</p>
+          <p class="country">UK</p>
+          <p class="company">CBS Records</p>
+          <p class="price">9.9</p>
+          <p class="year">1988</p>
+        </li>
+        <li class="cd">
+          <p class="title">Greatest Hits</p>
+          <p class="artist">Dolly Parton</p>
+          <p class="country">USA</p>
+          <p class="company">RCA</p>
+          <p class="price">9.9</p>
+          <p class="year">1982</p>
+        </li>
+      </ul>
+    </body>
+  </html>
+
+
+
+  <!--   Static Template Nxt Builder Html Class      -->
+
+  <html>
+    <body>
+      <ul class="catalog">
+        <li class="cd">
+          <p class="title">Empire Burlesque</p>
+          <p class="artist">Bob Dylan</p>
+          <p class="country">USA</p>
+          <p class="company">Columbia</p>
+          <p class="price">10.9</p>
+          <p class="year">1985</p>
+        </li>
+        <li class="cd">
+          <p class="title">Hide your heart</p>
+          <p class="artist">Bonnie Tylor</p>
+          <p class="country">UK</p>
+          <p class="company">CBS Records</p>
+          <p class="price">9.9</p>
+          <p class="year">1988</p>
+        </li>
+        <li class="cd">
+          <p class="title">Greatest Hits</p>
+          <p class="artist">Dolly Parton</p>
+          <p class="country">USA</p>
+          <p class="company">RCA</p>
+          <p class="price">9.9</p>
+          <p class="year">1982</p>
+        </li>
+      </ul>
+    </body>
+  </html>
+</results>

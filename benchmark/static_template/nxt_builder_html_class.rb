@@ -43,11 +43,15 @@ module NxtBuilder
       end
 
       def initialize
-        @builder = NxtBuilder::HTML.new
+        @builder = Builder.new
       end
 
       def run
-        @builder.render!.to_s
+        html = @builder.render!.to_s
+
+        @builder.clear_buffer!
+
+        html
       end
     end
   end

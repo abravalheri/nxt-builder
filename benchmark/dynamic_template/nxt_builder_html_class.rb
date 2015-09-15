@@ -38,7 +38,11 @@ module NxtBuilder
       end
 
       def run
-        @builder.render!.to_s
+        html = @builder.render!.to_s
+
+        @builder.clear_buffer!
+
+        html
       end
     end
   end
