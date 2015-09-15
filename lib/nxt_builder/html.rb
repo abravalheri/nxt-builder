@@ -48,6 +48,8 @@ module NxtBuilder
       super
     end
 
-    alias_method :to_s, :to_html
+    def to_format(format = :xml, options = {})
+      super
+    end
   end
 end

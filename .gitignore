@@ -1,5 +1,7 @@
 # Created by https://www.gitignore.io/api/vim,sublimetext,linux,ruby,windows,osx
 
+.tmp-results
+
 ### Vim ###
 [._]*.s[a-w][a-z]
 [._]s[a-w][a-z]
