@@ -1,14 +1,14 @@
 require 'spec_helper'
 
 describe NxtBuilder::XML do
-  subject { NxtBuilder::XML.new }
-
   describe "#_tag" do
     before { subject.clear_buffer! }
     let!(:result) { subject._tag(:div) }
 
-    specify { expect(result).to respond_to(:to_s) }
-    specify { expect(result.to_s).to be_xml }
+    it "should produce valid xml" do
+      expect(result).to respond_to(:to_s)
+      expect(result.to_s).to be_xml
+    end
 
     it "should keep inner buffer empty" do
       expect(subject.to_s).to be_empty
@@ -46,34 +46,29 @@ describe NxtBuilder::XML do
   end
 
   describe "#raw!" do
+    before { subject.clear_buffer! && subject.raw!("<a/>") }
+    let!(:buffer_state) { subject.to_s }
+
     it "should populate inner buffer" do
-      subject.raw!("text")
-      expect(subject.to_s).to eq("text")
+      expect(buffer_state).to eq("<a/>")
     end
 
     it "should not escape characters" do
-      subject.raw!("<a/>")
-      expect(subject.to_s).to include('<')
+      expect(buffer_state).to include('<')
     end
   end
 
   describe "#_parse" do
     before { subject.clear_buffer! }
+    let!(:node) { subject._parse('<a/>').to_s }
+    let!(:buffer_state) { subject.to_s }
 
     it "should keep inner buffer empty" do
-      subject._parse('<a/>')
-      expect(subject.to_s).to be_empty
+      expect(buffer_state).to be_empty
     end
 
     it "should be equivalent to _tag" do
-      expect(subject._parse('<a/>').to_s).to eq(subject._tag(:a).to_s)
+      expect(node).to eq(subject._tag(:a).to_s)
     end
   end
 end
-
-
-  # before do
-  #   unless NxtBuilder::XML.method_defined?(:div)
-  #     NxtBuilder::XML.register(:div)
-  #   end
-  # end
