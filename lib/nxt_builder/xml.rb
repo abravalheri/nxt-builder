@@ -22,7 +22,8 @@ module NxtBuilder
     # options - Hash options for builder:
     #          :encoding - String with character encoding (default: "UTF-8").
     def initialize(options = {})
-      options = { encoding: 'UTF-8' }.merge(options)
+      options[:encoding] ||= 'UTF-8'
+
       @encoding = options[:encoding]
       @doc = self.class.document_class.new
       @doc.encoding = @encoding
@@ -142,7 +143,8 @@ module NxtBuilder
     end
 
     def doctype!(name, external_id = nil, system_id = nil, options = {})
-      options = { external: true }.merge(options)
+      options[:external] ||= true
+
       if options[:external]
         node = @doc.create_external_subset(name.to_s, external_id, system_id)
         node.external_subset.remove
@@ -160,11 +162,9 @@ module NxtBuilder
       # Explicitly requires the XML opening PI
 
       # normalize options
-      options = {
-        version: "1.0",
-        encoding: @encoding,
-        standalone: nil
-      }.merge(options)
+      options[:version] ||= "1.0"
+      options[:encoding] ||= @encoding
+      options[:standalone] ||= nil
 
       version = options[:version]
       encoding = options[:encoding]
@@ -226,13 +226,9 @@ module NxtBuilder
       end
     end
 
-    alias_method :to_s, :to_xml
-
-    def to_format(format, options = {})
-      options = {
-        encoding: @encoding,
-        save_with: 0
-      }.merge(options)
+    def to_format(format = :xml, options = {})
+      options[:encoding] ||= @encoding
+      options[:save_with] ||= 0
 
       options[:save_with] |= case format
         when :xml then Nokogiri::XML::Node::SaveOptions::AS_XML
@@ -249,5 +245,7 @@ module NxtBuilder
       response << @dtd.to_xml << "\n" if @dtd
       response << @buffer.to_xml(options)
     end
+
+    alias_method :to_s, :to_format
   end
 end
