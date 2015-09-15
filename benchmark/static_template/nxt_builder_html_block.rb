@@ -8,7 +8,7 @@ module NxtBuilder
 
       def run
         # Taken from http://www.xmlfiles.com/examples/cd_catalog.xml
-        @builder.render! do |r|
+        html = @builder.render! do |r|
           r.html do
             r.body do
               r.ul class: "catalog" do
@@ -41,6 +41,9 @@ module NxtBuilder
           end
         end.to_s
 
+        @builder.clear_buffer!
+
+        html
       end
 
     end

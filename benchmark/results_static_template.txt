@@ -1,0 +1,51 @@
+Benchmark 2015-09-15 17:03:12 -0300 time: 5 warmup: 2 
+Calculating -------------------------------------
+ Static Template Arbre                     
+                        39.000  i/100ms
+ Static Template Erb                       
+                       842.000  i/100ms
+ Static Template Erector Class             
+                        72.000  i/100ms
+ Static Template Erector Mixin             
+                        54.000  i/100ms
+ Static Template Htmless Standard          
+                        22.000  i/100ms
+ Static Template Htmless Formatted         
+                        22.000  i/100ms
+ Static Template Nokogiri Builder          
+                        78.000  i/100ms
+ Static Template Nxt Builder Html Block    
+                        48.000  i/100ms
+ Static Template Nxt Builder Html Class    
+                        51.000  i/100ms
+-------------------------------------------------
+ Static Template Arbre                     
+                        371.957  (±20.2%) i/s -      1.794k
+ Static Template Erb                       
+                         12.423k (±24.3%) i/s -     58.098k
+ Static Template Erector Class             
+                        615.535  (±22.1%) i/s -      2.952k
+ Static Template Erector Mixin             
+                        609.514  (±21.0%) i/s -      2.916k
+ Static Template Htmless Standard          
+                          1.637k (±33.9%) i/s -      6.666k
+ Static Template Htmless Formatted         
+                          1.511k (±28.9%) i/s -      6.490k
+ Static Template Nokogiri Builder          
+                        764.180  (±22.9%) i/s -      3.666k
+ Static Template Nxt Builder Html Block    
+                          1.050k (±23.1%) i/s -      4.848k
+ Static Template Nxt Builder Html Class    
+                          1.113k (±23.2%) i/s -      4.896k
+
+Comparison:
+ Static Template Erb                       :    12423.2 i/s
+ Static Template Htmless Standard          :     1637.2 i/s - 7.59x slower
+ Static Template Htmless Formatted         :     1510.8 i/s - 8.22x slower
+ Static Template Nxt Builder Html Class    :     1113.1 i/s - 11.16x slower
+ Static Template Nxt Builder Html Block    :     1050.4 i/s - 11.83x slower
+ Static Template Nokogiri Builder          :      764.2 i/s - 16.26x slower
+ Static Template Erector Class             :      615.5 i/s - 20.18x slower
+ Static Template Erector Mixin             :      609.5 i/s - 20.38x slower
+ Static Template Arbre                     :      372.0 i/s - 33.40x slower
+
