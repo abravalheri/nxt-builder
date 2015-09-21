@@ -1,51 +1,51 @@
-Benchmark 2015-09-15 17:03:00 -0300 time: 5 warmup: 2 
+Benchmark 2015-09-21 00:17:29 -0300 time: 5 warmup: 2 
 Calculating -------------------------------------
  Dynamic Template Arbre                     
-                        85.000  i/100ms
+                       111.000  i/100ms
  Dynamic Template Erb                       
-                       519.000  i/100ms
+                         1.036k i/100ms
  Dynamic Template Erector Class             
-                       147.000  i/100ms
+                       201.000  i/100ms
  Dynamic Template Erector Inline            
-                       140.000  i/100ms
+                       185.000  i/100ms
  Dynamic Template Htmless Standard          
-                       200.000  i/100ms
+                       270.000  i/100ms
  Dynamic Template Htmless Formatted         
-                        83.000  i/100ms
+                       246.000  i/100ms
  Dynamic Template Nokogiri Builder          
-                        75.000  i/100ms
+                       233.000  i/100ms
  Dynamic Template Nxt Builder Html Block    
-                        30.000  i/100ms
+                       210.000  i/100ms
  Dynamic Template Nxt Builder Html Class    
-                        48.000  i/100ms
+                       211.000  i/100ms
 -------------------------------------------------
  Dynamic Template Arbre                     
-                        358.406  (±16.5%) i/s -      1.785k
+                          1.042k (±16.3%) i/s -      5.106k
  Dynamic Template Erb                       
-                          3.916k (±15.3%) i/s -     19.203k
+                          9.556k (±20.6%) i/s -     46.620k
  Dynamic Template Erector Class             
-                        628.505  (± 9.2%) i/s -      3.234k
+                          1.949k (±17.3%) i/s -      9.447k
  Dynamic Template Erector Inline            
-                        605.571  (± 8.4%) i/s -      3.080k
+                          1.842k (±16.5%) i/s -      9.065k
  Dynamic Template Htmless Standard          
-                          1.380k (±15.7%) i/s -      6.800k
+                          4.677k (±17.8%) i/s -     22.410k
  Dynamic Template Htmless Formatted         
-                          1.365k (±16.6%) i/s -      6.640k
+                          4.142k (±18.5%) i/s -     19.680k
  Dynamic Template Nokogiri Builder          
-                        707.266  (±20.9%) i/s -      3.375k
+                          2.052k (±21.0%) i/s -      9.786k
  Dynamic Template Nxt Builder Html Block    
-                        525.800  (±22.1%) i/s -      2.430k
+                          2.303k (±27.2%) i/s -     10.500k
  Dynamic Template Nxt Builder Html Class    
-                        491.860  (±23.4%) i/s -      2.304k
+                          2.258k (±32.0%) i/s -      9.495k
 
 Comparison:
- Dynamic Template Erb                       :     3915.9 i/s
- Dynamic Template Htmless Standard          :     1379.9 i/s - 2.84x slower
- Dynamic Template Htmless Formatted         :     1364.7 i/s - 2.87x slower
- Dynamic Template Nokogiri Builder          :      707.3 i/s - 5.54x slower
- Dynamic Template Erector Class             :      628.5 i/s - 6.23x slower
- Dynamic Template Erector Inline            :      605.6 i/s - 6.47x slower
- Dynamic Template Nxt Builder Html Block    :      525.8 i/s - 7.45x slower
- Dynamic Template Nxt Builder Html Class    :      491.9 i/s - 7.96x slower
- Dynamic Template Arbre                     :      358.4 i/s - 10.93x slower
+ Dynamic Template Erb                       :     9556.0 i/s
+ Dynamic Template Htmless Standard          :     4676.7 i/s - 2.04x slower
+ Dynamic Template Htmless Formatted         :     4142.0 i/s - 2.31x slower
+ Dynamic Template Nxt Builder Html Block    :     2302.9 i/s - 4.15x slower
+ Dynamic Template Nxt Builder Html Class    :     2257.8 i/s - 4.23x slower
+ Dynamic Template Nokogiri Builder          :     2052.2 i/s - 4.66x slower
+ Dynamic Template Erector Class             :     1948.6 i/s - 4.90x slower
+ Dynamic Template Erector Inline            :     1841.7 i/s - 5.19x slower
+ Dynamic Template Arbre                     :     1041.8 i/s - 9.17x slower
 
