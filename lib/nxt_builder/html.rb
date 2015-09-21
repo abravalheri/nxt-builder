@@ -8,17 +8,18 @@ module NxtBuilder
 
     register TAGS
 
-    def self.document_class
-      Nokogiri::HTML::Document
-    end
-
     def doctype!(external_id = nil, system_id = nil, options = {})
       super('html', external_id, system_id)
     end
 
-    def html!(*args, &block)
+    def html!(*args)
       doctype!
-      tag!(:html, *args, &block)
+      args.unshift(:html)
+      if block_given?
+        tag!(*args, &Proc.new)
+      else
+        tag!(*args)
+      end
     end
 
     def _tag(name, content_or_options = nil, options = {})

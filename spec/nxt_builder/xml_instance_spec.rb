@@ -7,11 +7,11 @@ describe NxtBuilder::XML do
 
     it "should produce valid xml" do
       expect(result).to respond_to(:to_s)
-      expect(result.to_s).to be_xml
+      expect(result.to_s.strip).to be_xml
     end
 
     it "should keep inner buffer empty" do
-      expect(subject.to_s).to be_empty
+      expect(subject.to_s.strip).to be_empty
     end
   end
 
@@ -20,7 +20,7 @@ describe NxtBuilder::XML do
     let!(:result) { subject.tag!(:div) }
 
     it "should populate inner buffer" do
-      expect(subject.to_s).to eq(result.to_s)
+      expect(subject.to_s.strip).to eq(result.to_s.strip)
     end
 
     context "when called with a block" do
@@ -36,18 +36,18 @@ describe NxtBuilder::XML do
   describe "#text!" do
     it "should populate inner buffer" do
       subject.text!("text")
-      expect(subject.to_s).to eq("text")
+      expect(subject.to_s.strip).to eq("text")
     end
 
     it "should escape characters" do
       subject.text!("<a/>")
-      expect(subject.to_s).not_to include('<')
+      expect(subject.to_s.strip).not_to include('<')
     end
   end
 
   describe "#raw!" do
     before { subject.clear_buffer! && subject.raw!("<a/>") }
-    let!(:buffer_state) { subject.to_s }
+    let!(:buffer_state) { subject.to_s.strip }
 
     it "should populate inner buffer" do
       expect(buffer_state).to eq("<a/>")
@@ -68,7 +68,7 @@ describe NxtBuilder::XML do
     end
 
     it "should be equivalent to _tag" do
-      expect(node).to eq(subject._tag(:a).to_s)
+      expect(node).to eq(subject._tag(:a).to_s.strip)
     end
   end
 end

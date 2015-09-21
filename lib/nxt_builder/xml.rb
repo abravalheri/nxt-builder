@@ -1,7 +1,7 @@
 require "nxt_builder/xml/class_methods"
 
 module NxtBuilder
-  # Public: XML Builde.r
+  # Public: XML Builder
   class XML < Object
     # Design Guidelines:
     #
@@ -9,9 +9,6 @@ module NxtBuilder
     #   do not cause side effects may me named with an strating `_`, and methods
     #   that have side effects (like changing the buffer or the internal state)
     #   may end with `!`. It is ugly, but works...
-    #
-    # - Use document fragments as much as possible... Use the document just
-    #  to create nodes. This enable an abscent root node.
     #
     # - Require user explicitly use doctypes and the xml opening instruction.
 
@@ -27,7 +24,7 @@ module NxtBuilder
       @encoding = options[:encoding]
       @doc = self.class.document_class.new
       @doc.encoding = @encoding
-      @buffer = @doc.fragment
+      @parent = @doc
       @dtd = nil
       @opening_pi = nil
     end
@@ -61,13 +58,12 @@ module NxtBuilder
       node = @doc.create_element(tag.to_s, *args)
 
       if block_given?
-        old_buffer = @buffer
-        @buffer = @doc.fragment
+        old_parent = @parent
+        @parent = node
         begin
           yield
-          node << @buffer
         ensure
-          @buffer = old_buffer
+          @parent = old_parent
         end
       end
 
@@ -78,9 +74,9 @@ module NxtBuilder
     # in the buffer. See #_tag.
     def tag!(tag, *args, &block)
       node = _tag(tag, *args, &block)
-      @buffer << node
+      @parent << node
 
-      node
+      self
     end
 
     # Public: Creates a text node and append it to the buffer.
@@ -90,9 +86,9 @@ module NxtBuilder
     # Returns the text node.
     def text!(string)
       node = @doc.create_text_node(string)
-      @buffer << node
+      @parent << node
 
-      node
+      self
     end
 
     # Public: Parses text representing xml into a node tree.
@@ -115,9 +111,9 @@ module NxtBuilder
     # Returns the resulting of parsing the string
     def raw!(string)
       node = _parse(string)
-      @buffer << node
+      @parent << node
 
-      node
+      self
     end
 
     def _cdata(string)
@@ -126,9 +122,9 @@ module NxtBuilder
 
     def cdata!(string)
       node = @doc.create_cdata(string.to_s)
-      @buffer << node
+      @parent << node
 
-      node
+      self
     end
 
     def _comment(string)
@@ -137,9 +133,9 @@ module NxtBuilder
 
     def comment!(string)
       node = @doc.create_comment(string.to_s)
-      @buffer << node
+      @parent << node
 
-      node
+      self
     end
 
     def doctype!(name, external_id = nil, system_id = nil, options = {})
@@ -155,7 +151,7 @@ module NxtBuilder
 
       @dtd = node
 
-      node
+      self
     end
 
     def xml!(options = {})
@@ -180,21 +176,21 @@ module NxtBuilder
       node = Nokogiri::XML::ProcessingInstruction.new(@doc, 'xml', content)
       @opening_pi = node
 
-      node
+      self
     end
 
     def pi!(name, content)
       # Create a process instruction <?#{name} #{content}?>
       node = Nokogiri::XML::ProcessingInstruction.new(@doc, name, content)
-      @buffer << node
+      @parent << node
 
-      node
+      self
     end
 
     def <<(element)
       element = @doc.create_text_node(element) if element.kind_of? String
 
-      @buffer << element
+      @parent << element
 
       self
     end
@@ -202,14 +198,14 @@ module NxtBuilder
     alias_method :after!, :<<
 
     def prepend!(element)
-      @buffer.prepend_child(element)
+      @parent.prepend_child(element)
 
       self
     end
     alias_method :before!, :prepend!
 
     def clear_buffer!
-      @buffer.content = ''
+      @parent.content = ''
 
       self
     end
@@ -243,7 +239,7 @@ module NxtBuilder
       response = ""
       response << @opening_pi.to_xml << "\n" if @opening_pi
       response << @dtd.to_xml << "\n" if @dtd
-      response << @buffer.to_xml(options)
+      response << @parent.to_xml(options)
     end
 
     alias_method :to_s, :to_format
