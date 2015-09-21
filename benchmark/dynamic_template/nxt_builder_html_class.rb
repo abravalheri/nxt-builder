@@ -28,7 +28,6 @@ module NxtBuilder
             end
           end
 
-          self
         end
 
       end
