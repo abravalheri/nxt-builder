@@ -48,9 +48,5 @@ module NxtBuilder
 
       super
     end
-
-    def to_format(format = :xml, options = {})
-      super
-    end
   end
 end
