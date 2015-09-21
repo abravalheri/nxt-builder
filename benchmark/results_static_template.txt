@@ -1,51 +1,51 @@
-Benchmark 2015-09-15 17:03:12 -0300 time: 5 warmup: 2 
+Benchmark 2015-09-21 00:45:44 -0300 time: 10 warmup: 4 
 Calculating -------------------------------------
  Static Template Arbre                     
-                        39.000  i/100ms
+                        97.000  i/100ms
  Static Template Erb                       
-                       842.000  i/100ms
+                         3.144k i/100ms
  Static Template Erector Class             
-                        72.000  i/100ms
+                       189.000  i/100ms
  Static Template Erector Mixin             
-                        54.000  i/100ms
+                       185.000  i/100ms
  Static Template Htmless Standard          
-                        22.000  i/100ms
+                       397.000  i/100ms
  Static Template Htmless Formatted         
-                        22.000  i/100ms
+                       333.000  i/100ms
  Static Template Nokogiri Builder          
-                        78.000  i/100ms
+                       230.000  i/100ms
  Static Template Nxt Builder Html Block    
-                        48.000  i/100ms
+                       204.000  i/100ms
  Static Template Nxt Builder Html Class    
-                        51.000  i/100ms
+                       171.000  i/100ms
 -------------------------------------------------
  Static Template Arbre                     
-                        371.957  (±20.2%) i/s -      1.794k
+                          1.050k (±22.4%) i/s -      9.797k
  Static Template Erb                       
-                         12.423k (±24.3%) i/s -     58.098k
+                         26.582k (±44.3%) i/s -    201.216k
  Static Template Erector Class             
-                        615.535  (±22.1%) i/s -      2.952k
+                        961.088  (±20.0%) i/s -      9.261k
  Static Template Erector Mixin             
-                        609.514  (±21.0%) i/s -      2.916k
+                        871.403  (±25.5%) i/s -      7.955k
  Static Template Htmless Standard          
-                          1.637k (±33.9%) i/s -      6.666k
+                          2.313k (±21.8%) i/s -     21.438k
  Static Template Htmless Formatted         
-                          1.511k (±28.9%) i/s -      6.490k
+                          2.047k (±22.3%) i/s -     18.315k
  Static Template Nokogiri Builder          
-                        764.180  (±22.9%) i/s -      3.666k
+                          1.123k (±27.7%) i/s -     10.120k
  Static Template Nxt Builder Html Block    
-                          1.050k (±23.1%) i/s -      4.848k
+                          1.169k (±29.2%) i/s -     10.200k
  Static Template Nxt Builder Html Class    
-                          1.113k (±23.2%) i/s -      4.896k
+                          1.189k (±20.0%) i/s -     10.773k
 
 Comparison:
- Static Template Erb                       :    12423.2 i/s
- Static Template Htmless Standard          :     1637.2 i/s - 7.59x slower
- Static Template Htmless Formatted         :     1510.8 i/s - 8.22x slower
- Static Template Nxt Builder Html Class    :     1113.1 i/s - 11.16x slower
- Static Template Nxt Builder Html Block    :     1050.4 i/s - 11.83x slower
- Static Template Nokogiri Builder          :      764.2 i/s - 16.26x slower
- Static Template Erector Class             :      615.5 i/s - 20.18x slower
- Static Template Erector Mixin             :      609.5 i/s - 20.38x slower
- Static Template Arbre                     :      372.0 i/s - 33.40x slower
+ Static Template Erb                       :    26581.8 i/s
+ Static Template Htmless Standard          :     2312.7 i/s - 11.49x slower
+ Static Template Htmless Formatted         :     2046.7 i/s - 12.99x slower
+ Static Template Nxt Builder Html Class    :     1189.0 i/s - 22.36x slower
+ Static Template Nxt Builder Html Block    :     1168.9 i/s - 22.74x slower
+ Static Template Nokogiri Builder          :     1123.4 i/s - 23.66x slower
+ Static Template Arbre                     :     1050.1 i/s - 25.31x slower
+ Static Template Erector Class             :      961.1 i/s - 27.66x slower
+ Static Template Erector Mixin             :      871.4 i/s - 30.50x slower
 
