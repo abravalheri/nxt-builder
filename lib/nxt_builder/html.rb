@@ -1,9 +1,12 @@
 require 'nxt_builder/xml'
 require 'nxt_builder/html/tags'
 require 'nxt_builder/html/boolean_attributes'
+require 'nxt_builder/html/class_methods'
 
 module NxtBuilder
   class HTML < XML
+    extend ClassMethods
+
     TAG_PREFIXES = [:data, :aria]
 
     register TAGS
@@ -25,6 +28,7 @@ module NxtBuilder
     def _tag(name, content_or_options = nil, options = {})
       if content_or_options.kind_of?(Hash)
         opt = content_or_options
+        content_or_options = nil
       else
         opt = options
       end
@@ -46,7 +50,26 @@ module NxtBuilder
         end
       end
 
-      super
+      element = self.class.tag_cache[name.to_s]
+      return super if element.nil?
+
+      element = element.dup()
+      content = content_or_options
+      opt.each { |k,v| element[k.to_s] = v.to_s }
+      content = @doc.create_text_node(content) if content.kind_of?(String)
+      element << content unless content.nil?
+
+      if block_given?
+        old_parent = @parent
+        @parent = element
+        begin
+          yield
+        ensure
+          @parent = old_parent
+        end
+      end
+
+      element
     end
   end
 end
