@@ -23,7 +23,7 @@ module NxtBuilder
 
       node = ELEMENT_.new(name.to_s, @doc)
       options.each { |k, v| node[k.to_s] = v.to_s }
-      node << content unless content.nil? || content.empty?
+      node << content unless content.nil?
 
       if block_given?
         old_parent = @parent

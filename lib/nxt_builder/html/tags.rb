@@ -1,5 +1,5 @@
 module NxtBuilder
-  class HTML < XML
+  class HTML < SimpleXML
     TAGS = [
       'a',
       'abbr',

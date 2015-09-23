@@ -2,7 +2,7 @@ require 'set'
 require 'nxt_builder/xml'
 
 module NxtBuilder
-  class HTML < XML
+  class HTML < SimpleXML
     BOOLEAN_ATTRIBUTES = [
       'disabled',
       'readonly',
