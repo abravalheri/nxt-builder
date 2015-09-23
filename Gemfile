@@ -10,3 +10,9 @@ group :benchmark do
   gem 'erector', '~> 0.10.0'
   gem 'htmless', '~> 0.4.2'
 end
+
+# Development
+group :development do
+  gem 'pry'
+  gem 'pry-doc'
+end

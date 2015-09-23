@@ -2,7 +2,7 @@ require "nxt_builder/xml/class_methods"
 
 module NxtBuilder
   # Public: XML Builder
-  class XML < Object
+  class XML
     # Design Guidelines:
     #
     # - Avoid to use names for methods that can conflict with tags. Methods that

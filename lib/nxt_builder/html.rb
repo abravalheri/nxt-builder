@@ -1,9 +1,9 @@
-require 'nxt_builder/xml'
+require 'nxt_builder/simple_xml'
 require 'nxt_builder/html/tags'
 require 'nxt_builder/html/boolean_attributes'
 
 module NxtBuilder
-  class HTML < XML
+  class HTML < SimpleXML
     TAG_PREFIXES = [:data, :aria]
 
     register TAGS
